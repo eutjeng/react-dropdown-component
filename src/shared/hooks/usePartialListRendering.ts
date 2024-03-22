@@ -52,11 +52,10 @@ export const usePartialListRendering = (
 
   // Render only visible items, no need to handle the buffer here since it's included in the range
   const itemsToRender = useCallback(() => {
-    const items = [];
-    for (let i = visibleRange[0]; i <= visibleRange[1]; i++) {
-      items.push(i);
-    }
-    return items;
+    return Array.from(
+      { length: visibleRange[1] - visibleRange[0] + 1 },
+      (_, i) => i + visibleRange[0],
+    );
   }, [visibleRange]);
 
   return { itemsToRender, calculateVisibleItems };
