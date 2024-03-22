@@ -1,81 +1,87 @@
 # User Selection Dropdown Component
 
-This project includes a customizable dropdown component for selecting users from a dynamically loaded list. Employing React and TypeScript, the component features an infinite scrolling capability to efficiently handle large datasets.
+This project includes a customizable dropdown component for selecting users from a dynamically loaded list. Employing React and TypeScript, the component features infinite scrolling capability to efficiently handle large datasets.
 
 ## Features
 
-- Custom dropdown to select users.
-- Infinite scrolling for optimal performance with extensive lists.
-- Partial item rendering to manage resource-intensive DOM operations.
-- Strongly typed with TypeScript for reliable code.
-- Ensured code quality with ESLint and Prettier.
+- Custom dropdown to select users
+- Infinite scrolling for optimal performance with large lists
+- Partial item rendering for efficient DOM management
+- Strong typing with TypeScript for development reliability
+- Code quality ensured with ESLint and Prettier
 
 ## Getting Started
 
-## Configuration
-
-### Initial User List Limit
-
-To adjust the initial number of users loaded by the User Select feature, you can modify the `INITIAL_LIST_LIMIT` constant. This constant determines how many user records are fetched when the user dropdown is initialized.
-
-Location of the constant:
-`src/features/userSelect/lib/utils/constants.ts`
-
-Code snippet:
-
-```typescript
-// Fixed height in REM for each item
-export const ITEM_HEIGHT_IN_REM = 2;
-// Items to render outside the viewport for smoother scrolling
-export const INITIAL_LIST_LIMIT = 50;
-```
+Follow these instructions to set up your development environment and start using the User Selection Dropdown component.
 
 ### Prerequisites
 
-Ensure you have the following installed on your system:
+Before you begin, ensure you have the following installed on your system:
 
 - Node.js (version 14 or above)
-- npm or yarn
+- npm or yarn (for managing packages)
 
 ### Installation
 
-Clone the repository and install the dependencies:
+Clone the repository and install the required dependencies:
 
 ```bash
-git clone <repository-url>
-cd <project-directory>
+git clone https://github.com/eutjeng/react-dropdown-component.git
+cd react-dropdown-component
 npm install
 ```
 
-### Development
+### Running the Development Server
 
-To start the development server:
+To launch the development server, run the following command:
 
 ```bash
 npm start
 ```
 
-The application will be available at `http://localhost:8080`.
+This will make the application available at `http://localhost:8080`.
 
 ### Building for Production
 
-To create a production build:
+To create an optimized production build:
 
 ```bash
 npm run build
 ```
 
-The output will be in the `dist` directory.
+Compiled output will be placed in the `dist` directory.
 
-### Code Linting
+## Configuration
 
-To check the code for any linting errors:
+### Initial User List Limit
+
+To change the initial number of users fetched on component load, update the `INITIAL_LIST_LIMIT` constant in:
+
+```
+src/features/userSelect/lib/utils/constants.ts
+```
+
+Here's the code to adjust the limit:
+
+```typescript
+export const INITIAL_LIST_LIMIT = 50; // Initial number of items to fetch
+```
+
+### Using the Dropdown
+
+Implement the `<UserSelectDropdown />` component in your application to provide a user selection interface with an initial user list limit and infinite scrolling features.
+
+### Code Quality Assurance
+
+To ensure your code adheres to linting rules:
 
 ```bash
 npm run lint
 ```
 
-To automatically fix linting errors:
+This will highlight any linting issues across your codebase.
+
+For automatically fixing these linting issues where possible:
 
 ```bash
 npm run lint:fix
