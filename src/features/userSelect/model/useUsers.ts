@@ -12,7 +12,7 @@ export const useUsers = (
   const [error, setError] = useState<string | null>(null);
   const [page, setPage] = useState<number>(initialPage);
   const [hasMore, setHasMore] = useState<boolean>(true);
-  const isInitialLoad = useRef(true);
+  const isInitialLoad = useRef<boolean>(true);
 
   const loadUsers = useCallback(async () => {
     if (loading) return;
