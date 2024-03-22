@@ -22,9 +22,7 @@ export const UserSelectDropdown: React.FC = () => {
   };
 
   useEffect(() => {
-    if (users.length > 0 && !selectedUser) {
-      setSelectedUser(users[0]);
-    }
+    if (users.length > 0 && !selectedUser) setSelectedUser(users[0]);
   }, [users, selectedUser]);
 
   return (
