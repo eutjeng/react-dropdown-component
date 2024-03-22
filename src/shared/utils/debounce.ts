@@ -4,7 +4,7 @@ export const debounce = <T extends unknown[], R>(
 ): ((...args: T) => void) => {
   let timeoutId: ReturnType<typeof setTimeout> | null = null;
 
-  return function (...args: T): void {
+  return (...args: T): void => {
     const doLater = () => {
       timeoutId = null;
       func(...args);
