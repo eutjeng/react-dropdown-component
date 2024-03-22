@@ -26,8 +26,8 @@ Before you begin, ensure you have the following installed on your system:
 Clone the repository and install the required dependencies:
 
 ```bash
-git clone https://github.com/your-username/your-repository-name.git
-cd your-repository-name
+git clone https://github.com/eutjeng/react-dropdown-component.git
+cd react-dropdown-component
 npm install
 ```
 
