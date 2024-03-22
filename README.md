@@ -64,9 +64,6 @@ src/features/userSelect/lib/utils/constants.ts
 Here's the code to adjust the limit:
 
 ```typescript
-// Fixed height in REM for each item
-export const ITEM_HEIGHT_IN_REM = 2;
-
 // Initial number of items to fetch and render
 export const INITIAL_LIST_LIMIT = 50; // Change 50 to your preferred initial limit
 ```
