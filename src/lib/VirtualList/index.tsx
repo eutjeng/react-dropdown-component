@@ -10,11 +10,7 @@ interface VirtualListProps<ItemType> {
   style?: CSSProperties;
   className?: string;
   onLoadMore: () => void;
-  renderItem: (
-    item: ItemType,
-    style: CSSProperties,
-    index: number,
-  ) => React.ReactNode;
+  renderItem: (item: ItemType, style: CSSProperties) => React.ReactNode;
 }
 
 export const VirtualList = <ItemType,>({
@@ -56,7 +52,7 @@ export const VirtualList = <ItemType,>({
             height: `${itemHeightInRem}rem`,
           };
 
-          return renderItem(item, style, index);
+          return renderItem(item, style);
         })}
       </div>
     </div>
