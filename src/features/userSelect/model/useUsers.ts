@@ -2,7 +2,10 @@ import { fetchUsers } from '@/api/users';
 import { useFetch } from '@/shared/hooks/useFetch';
 import { User } from '@/shared/types/user';
 import { useCallback } from 'react';
-import { INITIAL_LIST_LIMIT } from '../lib/utils/constants';
+import {
+  INITIAL_LIST_LIMIT,
+  INITIAL_PAGE_NUMBER,
+} from '../lib/utils/constants';
 
 type UseUsers = (
   initialPage?: number,
@@ -15,7 +18,10 @@ type UseUsers = (
   loadMore: () => Promise<void>;
 };
 
-export const useUsers: UseUsers = (initialPage, limit = INITIAL_LIST_LIMIT) => {
+export const useUsers: UseUsers = (
+  initialPage = INITIAL_PAGE_NUMBER,
+  limit = INITIAL_LIST_LIMIT,
+) => {
   const fetchFunction = useCallback((page: number, limit: number) => {
     return fetchUsers(page, limit).then((response) => response.data);
   }, []);
