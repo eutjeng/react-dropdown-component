@@ -1,5 +1,3 @@
-Here's a comprehensive and updated `README.md` for the project:
-
 # User Selection Dropdown Component
 
 An advanced React component designed for selecting users from a dynamic and potentially large list. It incorporates modern development practices and tooling, leveraging React, TypeScript, infinite scrolling, and partial rendering for a performant and user-friendly experience.
