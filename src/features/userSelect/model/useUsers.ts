@@ -1,8 +1,12 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { User } from '@/shared/types/user';
 import { fetchUsers } from '@/api/users';
+import { INITIAL_LIST_LIMIT } from '../lib/utils/constants';
 
-export const useUsers = (initialPage: number = 0, limit: number = 50) => {
+export const useUsers = (
+  initialPage: number = 0,
+  limit: number = INITIAL_LIST_LIMIT,
+) => {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);

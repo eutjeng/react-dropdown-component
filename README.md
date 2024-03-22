@@ -12,6 +12,24 @@ This project includes a customizable dropdown component for selecting users from
 
 ## Getting Started
 
+## Configuration
+
+### Initial User List Limit
+
+To adjust the initial number of users loaded by the User Select feature, you can modify the `INITIAL_LIST_LIMIT` constant. This constant determines how many user records are fetched when the user dropdown is initialized.
+
+Location of the constant:
+`src/features/userSelect/lib/utils/constants.ts`
+
+Code snippet:
+
+```typescript
+// Fixed height in REM for each item
+export const ITEM_HEIGHT_IN_REM = 2;
+// Items to render outside the viewport for smoother scrolling
+export const INITIAL_LIST_LIMIT = 50;
+```
+
 ### Prerequisites
 
 Ensure you have the following installed on your system:
