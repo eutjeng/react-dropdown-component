@@ -1,16 +1,13 @@
-import {
-  BUFFER_ITEMS,
-  ITEM_HEIGHT_IN_REM,
-} from '@/features/userSelect/lib/utils/constants';
 import { useCallback, useEffect, useState } from 'react';
 
-// Assuming 1rem = 16px, but this will dynamically adjust to actual root font-size.
 const remToPixels = (rem: number) =>
   rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
 
 export const usePartialListRendering = (
   listRef: React.RefObject<HTMLDivElement>,
   totalItems: number,
+  itemHeightInRem: number, // Now passed as an argument
+  bufferItems: number = 5, // Default buffer, can be overridden
 ) => {
   const [visibleRange, setVisibleRange] = useState<[number, number]>([0, 0]);
 
@@ -20,24 +17,32 @@ export const usePartialListRendering = (
 
     const scrollTop = listElement.scrollTop;
     const listHeight = listElement.clientHeight;
-    const itemHeightInPixels = remToPixels(ITEM_HEIGHT_IN_REM);
+    const itemHeightInPixels = remToPixels(itemHeightInRem);
 
-    // Calculate start and end index without buffer since we'll handle it in rendering
-    const startIdx = Math.max(0, Math.floor(scrollTop / itemHeightInPixels));
+    // Calculate start and end index, incorporating the buffer
+    const startIdx = Math.max(
+      0,
+      Math.floor(scrollTop / itemHeightInPixels) - bufferItems,
+    );
     const endIdx = Math.min(
       totalItems,
-      Math.ceil((scrollTop + listHeight) / itemHeightInPixels),
+      Math.ceil((scrollTop + listHeight) / itemHeightInPixels) + bufferItems,
     );
 
-    setVisibleRange([startIdx, endIdx]);
-  }, [listRef, totalItems]);
+    // Adjust the startIdx and endIdx to ensure they are within the bounds of the list
+    const adjustedStartIdx = Math.max(0, startIdx);
+    const adjustedEndIdx = Math.min(totalItems, endIdx);
+
+    setVisibleRange([adjustedStartIdx, adjustedEndIdx]);
+  }, [listRef, totalItems, itemHeightInRem, bufferItems]);
 
   useEffect(() => {
-    if (!listRef.current) return;
+    const listElement = listRef.current;
+    if (!listElement) return;
 
     // Trigger the calculation on resize as well
     const resizeObserver = new ResizeObserver(calculateVisibleItems);
-    resizeObserver.observe(listRef.current);
+    resizeObserver.observe(listElement);
 
     // Calculate items once initially in case the list is already visible
     calculateVisibleItems();
@@ -45,12 +50,14 @@ export const usePartialListRendering = (
     return () => resizeObserver.disconnect();
   }, [calculateVisibleItems, listRef]);
 
-  // Render only visible items with a buffer
+  // Render only visible items, no need to handle the buffer here since it's included in the range
   const itemsToRender = useCallback(() => {
-    return Array.from({ length: totalItems })
-      .slice(visibleRange[0], visibleRange[1] + BUFFER_ITEMS)
-      .map((_, index) => visibleRange[0] + index);
-  }, [visibleRange, totalItems]);
+    const items = [];
+    for (let i = visibleRange[0]; i <= visibleRange[1]; i++) {
+      items.push(i);
+    }
+    return items;
+  }, [visibleRange]);
 
   return { itemsToRender, calculateVisibleItems };
 };

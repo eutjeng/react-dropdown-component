@@ -1,14 +1,9 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { UserItem } from '../UserItem';
-import styles from './styles.module.css';
 import { User } from '@/shared/types/user';
+import styles from './styles.module.css';
+import { VirtualList } from '@/lib/VirtualList';
 import { ITEM_HEIGHT_IN_REM } from '../../lib/utils/constants';
-import { usePartialListRendering } from '@/shared/hooks/usePartialListRendering';
-import { useInfiniteScroll } from '@/shared/hooks/useInfiniteScroll';
-
-const listStyle = {
-  paddingRight: '0.25rem',
-};
 
 interface UserListProps {
   users: User[];
@@ -25,52 +20,29 @@ export const UserList: React.FC<UserListProps> = ({
   onLoadMore,
   onSelectUser,
 }) => {
-  const listRef = useRef<HTMLDivElement>(null);
-  const { itemsToRender, calculateVisibleItems } = usePartialListRendering(
-    listRef,
-    users.length,
-  );
+  const renderItem = (user: User, style: React.CSSProperties) => {
+    if (!user) return null;
 
-  const innerContainerStyle = {
-    height: `${users.length * ITEM_HEIGHT_IN_REM}rem`,
-    position: 'relative' as const,
+    return (
+      <UserItem
+        key={user.id}
+        user={user}
+        style={style}
+        isSelected={user.id === selectedUser?.id}
+        onClick={() => onSelectUser(user)}
+        withIcon
+      />
+    );
   };
 
-  useInfiniteScroll({
-    rootRef: listRef,
-    onScrollToEnd: onLoadMore,
-    hasMore,
-  });
-
   return (
-    <div
-      ref={listRef}
+    <VirtualList
       className={styles.userList}
-      onScroll={calculateVisibleItems}
-      style={listStyle}
-    >
-      <div style={innerContainerStyle}>
-        {itemsToRender().map((index) => {
-          const user = users[index];
-          const userItemStyle = {
-            position: 'absolute' as const,
-            top: `${index * ITEM_HEIGHT_IN_REM}rem`,
-            left: 0,
-            right: 0,
-            height: `${ITEM_HEIGHT_IN_REM}rem`,
-          };
-
-          return (
-            <UserItem
-              key={user.id}
-              user={user}
-              isSelected={user.id === selectedUser?.id}
-              style={userItemStyle}
-              onClick={() => onSelectUser(user)}
-            />
-          );
-        })}
-      </div>
-    </div>
+      items={users}
+      renderItem={renderItem}
+      itemHeightInRem={ITEM_HEIGHT_IN_REM}
+      onLoadMore={onLoadMore}
+      hasMore={hasMore}
+    />
   );
 };
