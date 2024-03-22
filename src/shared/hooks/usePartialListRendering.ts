@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 const remToPixels = (rem: number) =>
   rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
@@ -51,7 +51,7 @@ export const usePartialListRendering = (
   }, [calculateVisibleItems, listRef]);
 
   // Render only visible items, no need to handle the buffer here since it's included in the range
-  const itemsToRender = useCallback(() => {
+  const itemsToRender = useMemo(() => {
     return Array.from(
       { length: visibleRange[1] - visibleRange[0] + 1 },
       (_, i) => i + visibleRange[0],

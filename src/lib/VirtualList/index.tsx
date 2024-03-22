@@ -42,7 +42,7 @@ export const VirtualList = <ItemType,>({
   return (
     <div ref={listRef} onScroll={calculateVisibleItems} {...props}>
       <div style={innerContainerStyle}>
-        {itemsToRender().map((index) => {
+        {itemsToRender.map((index) => {
           const item = items[index];
           const style: CSSProperties = {
             position: 'absolute',
