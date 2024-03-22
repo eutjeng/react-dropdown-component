@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { INITIAL_PAGE_NUMBER } from '../utils/constants';
 
 export const useFetch = <T>(
   fetchFunction: (page: number, limit: number) => Promise<T[]>,
-  initialPage: number = 0,
+  initialPage: number = INITIAL_PAGE_NUMBER,
   limit: number,
 ) => {
   const [data, setData] = useState<T[]>([]);
