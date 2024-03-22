@@ -9,12 +9,6 @@ export const UserSelectDropdown: React.FC = () => {
   const { users, hasMore, loadMore } = useUsers();
   const [selectedUser, setSelectedUser] = useState<User>();
 
-  useEffect(() => {
-    if (users.length > 0 && !selectedUser) {
-      setSelectedUser(users[0]);
-    }
-  }, [users, selectedUser]);
-
   const handleSelectUser = (user: User) => {
     setSelectedUser(user);
     setIsOpen(false);
@@ -23,6 +17,12 @@ export const UserSelectDropdown: React.FC = () => {
   const handleToggleDropdown = () => {
     setIsOpen((prevIsOpen) => !prevIsOpen);
   };
+
+  useEffect(() => {
+    if (users.length > 0 && !selectedUser) {
+      setSelectedUser(users[0]);
+    }
+  }, [users, selectedUser]);
 
   return (
     <div
