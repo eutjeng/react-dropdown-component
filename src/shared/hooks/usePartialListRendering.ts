@@ -11,6 +11,14 @@ export const usePartialListRendering = (
 ) => {
   const [visibleRange, setVisibleRange] = useState<[number, number]>([0, 0]);
 
+  // Render only visible items, no need to handle the buffer here since it's included in the range
+  const itemsToRender = useMemo(() => {
+    return Array.from(
+      { length: visibleRange[1] - visibleRange[0] + 1 },
+      (_, i) => i + visibleRange[0],
+    );
+  }, [visibleRange]);
+
   const calculateVisibleItems = useCallback(() => {
     const listElement = listRef.current;
     if (!listElement) return;
@@ -49,14 +57,6 @@ export const usePartialListRendering = (
 
     return () => resizeObserver.disconnect();
   }, [calculateVisibleItems, listRef]);
-
-  // Render only visible items, no need to handle the buffer here since it's included in the range
-  const itemsToRender = useMemo(() => {
-    return Array.from(
-      { length: visibleRange[1] - visibleRange[0] + 1 },
-      (_, i) => i + visibleRange[0],
-    );
-  }, [visibleRange]);
 
   return { itemsToRender, calculateVisibleItems };
 };
