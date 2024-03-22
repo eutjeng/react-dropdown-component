@@ -72,19 +72,19 @@ Configure the API URL and initial pagination settings in `src/shared/utils/const
 
 ```typescript
 export const API_URL = 'https://alanbase.vercel.app/api'; // Endpoint for user data retrieval
-export const INITIAL_PAGE_NUMBER = 0; // Starting page index for user data fetching
 ```
 
 Update these constants as needed to align with your backend service.
 
 ### Initial User List Loading
 
-Adjust the initial number of users loaded by modifying `INITIAL_LIST_LIMIT`:
+Adjust the initial number of users loaded by modifying `INITIAL_LIST_LIMIT`, `INITIAL_PAGE_NUMBER` :
 
 File: `src/features/userSelect/lib/utils/constants.ts`
 
 ```typescript
 export const INITIAL_LIST_LIMIT = 50; // Default number of users fetched initially
+export const INITIAL_PAGE_NUMBER = 0; // Starting page index for user data fetching
 ```
 
 ### Dropdown Integration
