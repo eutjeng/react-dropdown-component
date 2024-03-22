@@ -1,0 +1,54 @@
+.dropdownContainer {
+  position: relative;
+  width: 100%;
+  border-radius: 0.25rem;
+  background-color: white;
+}
+
+.dropdownButton {
+  width: 100%;
+  height: 2rem;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 0.25rem;
+  color: #3f4254;
+  text-align: left;
+  cursor: pointer;
+  position: relative;
+  font-size: 0.813rem;
+  line-height: 1.25rem;
+  padding: 0 2rem 0 0.75rem;
+}
+
+.dropdownButton::after {
+  content: '';
+  position: absolute;
+  right: 0.625rem; /* adjust as necessary for exact positioning */
+  top: 45%;
+  transform: translateY(-50%) rotate(45deg); /* rotate to form a chevron shape */
+  border: solid #000; /* adjust the color as needed */
+  border-width: 0 2px 2px 0; /* creates an L shape */
+  padding: 3px; /* size of the chevron, adjust if necessary */
+  transition: transform 0.1s ease-in-out;
+}
+
+.dropdownButton:hover,
+.dropdownButton:focus {
+  box-shadow: 0 0 0 1px #4970ff37;
+}
+
+.dropdownButton.active {
+  box-shadow: 0 0 0 1px #4971ff;
+}
+
+.dropdownButton.active::after {
+  transform: translateY(0) rotate(225deg);
+}
+
+.dropdownCaret {
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

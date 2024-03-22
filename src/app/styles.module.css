@@ -1,0 +1,13 @@
+.appHeader {
+  background-color: #282c34;
+  min-height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(0.625rem + 2vmin);
+  color: white;
+}
+
+.app {
+  padding: 1rem;
+}
