@@ -4,6 +4,9 @@ import styles from './styles.module.css';
 import { useUsers } from '@/features/userSelect/model/useUsers';
 import { User } from '@/shared/types/user';
 
+const expandedWidth = '22.5rem';
+const collapsedWidth = '15.625rem';
+
 export const UserSelectDropdown: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { users, hasMore, loadMore } = useUsers();
@@ -27,7 +30,7 @@ export const UserSelectDropdown: React.FC = () => {
   return (
     <div
       className={styles.dropdownContainer}
-      style={{ width: isOpen ? '22.5rem' : '15.625rem' }}
+      style={{ width: isOpen ? expandedWidth : collapsedWidth }}
     >
       <button
         className={`${styles.dropdownButton} ${isOpen ? styles.active : ''}`}
