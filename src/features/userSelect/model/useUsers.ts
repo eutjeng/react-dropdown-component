@@ -8,10 +8,10 @@ export const useUsers = (initialPage: number = 0, limit: number = 50) => {
   const [error, setError] = useState<string | null>(null);
   const [page, setPage] = useState<number>(initialPage);
   const [hasMore, setHasMore] = useState<boolean>(true);
-  const isInitialLoad = useRef(true); // Ref to track the initial load
+  const isInitialLoad = useRef(true);
 
   const loadUsers = useCallback(async () => {
-    if (loading) return; // Prevent loading if already in progress
+    if (loading) return;
     setLoading(true);
     const pageNumber = page + 1;
 
@@ -19,7 +19,7 @@ export const useUsers = (initialPage: number = 0, limit: number = 50) => {
       const fetchedUsers = (await fetchUsers(pageNumber, limit)).data;
       setUsers((prevUsers) => [...prevUsers, ...fetchedUsers]);
       setHasMore(fetchedUsers.length === limit);
-      setPage(pageNumber); // Adjust based on the fetched data
+      setPage(pageNumber);
     } catch (e) {
       setError('An error occurred while fetching users.');
     } finally {
@@ -28,12 +28,11 @@ export const useUsers = (initialPage: number = 0, limit: number = 50) => {
   }, [page, limit, loading]);
 
   useEffect(() => {
-    // Use the isInitialLoad ref to ensure loadUsers is called only once on mount
     if (isInitialLoad.current && !loading) {
       loadUsers();
-      isInitialLoad.current = false; // Update ref after initial load
+      isInitialLoad.current = false;
     }
-  }, [loadUsers, loading]); // Depend on loading to prevent multiple calls
+  }, [loadUsers, loading]);
 
   return { users, loading, error, hasMore, loadMore: loadUsers };
 };
