@@ -3,7 +3,7 @@ import { UserItem } from '../UserItem';
 import { User } from '@/shared/types/user';
 import styles from './styles.module.css';
 import { VirtualList } from '@/lib/VirtualList';
-import { ITEM_HEIGHT_IN_REM } from '../../lib/utils/constants';
+import { BUFFER_ITEMS, ITEM_HEIGHT_IN_REM } from '../../lib/utils/constants';
 
 interface UserListProps {
   users: User[];
@@ -41,6 +41,7 @@ export const UserList: React.FC<UserListProps> = ({
       items={users}
       renderItem={renderItem}
       itemHeightInRem={ITEM_HEIGHT_IN_REM}
+      bufferItems={BUFFER_ITEMS}
       onLoadMore={onLoadMore}
       hasMore={hasMore}
     />

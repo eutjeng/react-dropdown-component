@@ -7,7 +7,7 @@ export const usePartialListRendering = (
   listRef: React.RefObject<HTMLDivElement>,
   totalItems: number,
   itemHeightInRem: number,
-  bufferItems: number = 5,
+  bufferItems: number,
 ) => {
   const [visibleRange, setVisibleRange] = useState<[number, number]>([0, 0]);
 

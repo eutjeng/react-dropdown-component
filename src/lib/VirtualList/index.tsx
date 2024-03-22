@@ -11,6 +11,7 @@ interface VirtualListProps<ItemType> {
   className?: string;
   onLoadMore: () => void;
   renderItem: (item: ItemType, style: CSSProperties) => React.ReactNode;
+  bufferItems: number;
 }
 
 export const VirtualList = <ItemType,>({
@@ -19,6 +20,7 @@ export const VirtualList = <ItemType,>({
   itemHeightInRem,
   onLoadMore,
   hasMore,
+  bufferItems,
   ...props
 }: VirtualListProps<ItemType>) => {
   const listRef = useRef<HTMLDivElement>(null);
@@ -26,6 +28,7 @@ export const VirtualList = <ItemType,>({
     listRef,
     items.length,
     itemHeightInRem,
+    bufferItems,
   );
 
   const innerContainerStyle: CSSProperties = {
