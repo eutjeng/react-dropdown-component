@@ -83,7 +83,7 @@ Adjust the initial number of users loaded by modifying `INITIAL_LIST_LIMIT`, `IN
 File: `src/features/userSelect/lib/utils/constants.ts`
 
 ```typescript
-export const INITIAL_LIST_LIMIT = 50; // Default number of users fetched initially
+export const INITIAL_LIST_LIMIT = 50; // Initial number of items to fetch
 export const INITIAL_PAGE_NUMBER = 0; // Starting page index for user data fetching
 ```
 
