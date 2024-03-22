@@ -23,12 +23,12 @@
 .dropdownButton::after {
   content: '';
   position: absolute;
-  right: 0.625rem; /* adjust as necessary for exact positioning */
+  right: 0.625rem;
   top: 45%;
-  transform: translateY(-50%) rotate(45deg); /* rotate to form a chevron shape */
-  border: solid #000; /* adjust the color as needed */
-  border-width: 0 2px 2px 0; /* creates an L shape */
-  padding: 3px; /* size of the chevron, adjust if necessary */
+  transform: translateY(-50%) rotate(45deg);
+  border: solid #000;
+  border-width: 0 2px 2px 0;
+  padding: 3px;
   transition: transform 0.1s ease-in-out;
 }
 
