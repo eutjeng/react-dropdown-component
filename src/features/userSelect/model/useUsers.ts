@@ -28,4 +28,3 @@ export const useUsers: UseUsers = (initialPage, limit = INITIAL_LIST_LIMIT) => {
 
   return { users: data, loading, error, hasMore, loadMore };
 };
-  : : : %
