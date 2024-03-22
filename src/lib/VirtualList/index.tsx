@@ -28,16 +28,16 @@ export const VirtualList = <ItemType,>({
     itemHeightInRem,
   );
 
+  const innerContainerStyle: CSSProperties = {
+    height: `${items.length * itemHeightInRem}rem`,
+    position: 'relative',
+  };
+
   useInfiniteScroll({
     rootRef: listRef,
     onScrollToEnd: onLoadMore,
     hasMore,
   });
-
-  const innerContainerStyle: CSSProperties = {
-    height: `${items.length * itemHeightInRem}rem`,
-    position: 'relative',
-  };
 
   return (
     <div ref={listRef} onScroll={calculateVisibleItems} {...props}>
