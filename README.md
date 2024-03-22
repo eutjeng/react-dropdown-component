@@ -1,4 +1,3 @@
-````markdown
 # User Selection Dropdown Component
 
 This project includes a customizable dropdown component for selecting users from a dynamically loaded list. Employing React and TypeScript, the component features an infinite scrolling capability to efficiently handle large datasets.
@@ -29,7 +28,6 @@ git clone <repository-url>
 cd <project-directory>
 npm install
 ```
-````
 
 ### Development
 
@@ -63,4 +61,8 @@ To automatically fix linting errors:
 
 ```bash
 npm run lint:fix
+```
+
+```
+
 ```
