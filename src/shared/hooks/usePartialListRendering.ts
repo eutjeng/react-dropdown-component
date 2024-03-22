@@ -6,8 +6,8 @@ const remToPixels = (rem: number) =>
 export const usePartialListRendering = (
   listRef: React.RefObject<HTMLDivElement>,
   totalItems: number,
-  itemHeightInRem: number, // Now passed as an argument
-  bufferItems: number = 5, // Default buffer, can be overridden
+  itemHeightInRem: number,
+  bufferItems: number = 5,
 ) => {
   const [visibleRange, setVisibleRange] = useState<[number, number]>([0, 0]);
 
