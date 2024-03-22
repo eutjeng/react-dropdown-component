@@ -3,7 +3,7 @@ import { UserItem } from '../UserItem';
 
 import styles from './styles.module.css';
 import { User } from '@/shared/types/user';
-import { ITEM_HEIGHT } from '../../lib/utils/constants';
+import { ITEM_HEIGHT_IN_REM } from '../../lib/utils/constants';
 import { usePartialListRendering } from '@/shared/hooks/usePartialListRendering';
 import { useInfiniteScroll } from '@/shared/hooks/useInfiniteScroll';
 
@@ -43,7 +43,7 @@ export const UserList: React.FC<UserListProps> = ({
     >
       <div
         style={{
-          height: `${users.length * ITEM_HEIGHT}rem`,
+          height: `${users.length * ITEM_HEIGHT_IN_REM}rem`,
           position: 'relative',
         }}
       >
@@ -57,10 +57,10 @@ export const UserList: React.FC<UserListProps> = ({
               isSelected={user.id === selectedUser?.id}
               style={{
                 position: 'absolute',
-                top: `${index * ITEM_HEIGHT}rem`,
+                top: `${index * ITEM_HEIGHT_IN_REM}rem`,
                 left: 0,
                 right: 0,
-                height: `${ITEM_HEIGHT}rem`,
+                height: `${ITEM_HEIGHT_IN_REM}rem`,
               }}
               onClick={() => onSelectUser(user)}
             />

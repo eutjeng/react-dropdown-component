@@ -1,6 +1,6 @@
 import {
   BUFFER_ITEMS,
-  ITEM_HEIGHT,
+  ITEM_HEIGHT_IN_REM,
 } from '@/features/userSelect/lib/utils/constants';
 import { useCallback, useEffect, useState } from 'react';
 
@@ -20,7 +20,7 @@ export const usePartialListRendering = (
 
     const scrollTop = listElement.scrollTop;
     const listHeight = listElement.clientHeight;
-    const itemHeightInPixels = remToPixels(ITEM_HEIGHT);
+    const itemHeightInPixels = remToPixels(ITEM_HEIGHT_IN_REM);
 
     // Calculate start and end index without buffer since we'll handle it in rendering
     const startIdx = Math.max(0, Math.floor(scrollTop / itemHeightInPixels));
