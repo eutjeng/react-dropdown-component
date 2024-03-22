@@ -62,7 +62,3 @@ To automatically fix linting errors:
 ```bash
 npm run lint:fix
 ```
-
-```
-
-```
