@@ -64,8 +64,7 @@ src/features/userSelect/lib/utils/constants.ts
 Here's the code to adjust the limit:
 
 ```typescript
-// Initial number of items to fetch and render
-export const INITIAL_LIST_LIMIT = 50; // Change 50 to your preferred initial limit
+export const INITIAL_LIST_LIMIT = 50; // Initial number of items to fetch and render
 ```
 
 ### Code Quality Assurance
