@@ -67,6 +67,10 @@ Here's the code to adjust the limit:
 export const INITIAL_LIST_LIMIT = 50; // Initial number of items to fetch
 ```
 
+### Using the Dropdown
+
+Implement the `<UserSelectDropdown />` component in your application to provide a user selection interface with an initial user list limit and infinite scrolling features.
+
 ### Code Quality Assurance
 
 To ensure your code adheres to linting rules:
@@ -82,17 +86,3 @@ For automatically fixing these linting issues where possible:
 ```bash
 npm run lint:fix
 ```
-
-## Usage
-
-### Starting the Component
-
-After completing the installation steps, you can start the component by running:
-
-```bash
-npm start
-```
-
-### Using the Dropdown
-
-Implement the `<UserSelectDropdown />` component in your application to provide a user selection interface with an initial user list limit and infinite scrolling features.
