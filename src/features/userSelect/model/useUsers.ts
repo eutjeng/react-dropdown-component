@@ -22,8 +22,10 @@ export const useUsers: UseUsers = (
   initialPage = INITIAL_PAGE_NUMBER,
   limit = INITIAL_LIST_LIMIT,
 ) => {
-  const fetchFunction = useCallback((page: number, limit: number) => {
-    return fetchUsers(page, limit).then((response) => response.data);
+  const fetchFunction = useCallback(async (page: number, limit: number) => {
+    const response = await fetchUsers(page, limit);
+
+    return response.data;
   }, []);
 
   const { data, loading, error, hasMore, loadMore } = useFetch<User>(
